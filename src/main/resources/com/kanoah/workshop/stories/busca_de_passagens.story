@@ -24,3 +24,13 @@ Examples:
 |01/12/2016	|09/12/2016	|2			|R$392		|R$352		    |ida 2% de desconto; volta 12% de desconto  |
 |01/03/2017	|09/03/2017	|1			|R$180		|R$160		    |ida 10% de desconto; volta 20% de desconto |
 |01/03/2017	|09/03/2017	|2			|R$352		|R$312		    |ida 12% de desconto; volta 22% de desconto |
+
+
+Scenario: São exibidos erros para cada campo vazio na busca
+
+Given eu estou na página de busca de passagens
+When procuro por passagens
+Then devo encontrar erro no campo De
+And devo encontrar erro no campo Para
+And devo encontrar erro no campo Ida
+And devo encontrar erro no campo Volta

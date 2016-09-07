@@ -56,4 +56,9 @@ public class TicketSearchSteps {
         Assert.assertEquals(custoIda, ticketResultsPage.getCustoDaPassagem(1));
         Assert.assertEquals(custoVolta, ticketResultsPage.getCustoDaPassagem(2));
     }
+
+    @Then("devo encontrar erro no campo $field_name")
+    public void devoEncontrarErroNoCampo(@Named("$field_name") String fieldName){
+        Assert.assertTrue(ticketSearchPage.temMensagemDeErro(fieldName));
+    }
 }

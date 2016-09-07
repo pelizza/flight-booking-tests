@@ -2,6 +2,7 @@ package com.kanoah.workshop.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class TicketSearchPage {
@@ -37,5 +38,9 @@ public class TicketSearchPage {
 
     public void procurarPassagens() {
         webDriver.findElement(By.tagName("button")).click();
+    }
+
+    public boolean temMensagemDeErro(String fieldName) {
+        return !webDriver.findElements(By.xpath("//div[label = \"" + fieldName + ":\"]/span")).isEmpty();
     }
 }
