@@ -3,6 +3,7 @@ package com.kanoah.workshop;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.kanoah.workshop.steps.LifecycleSteps;
 import com.kanoah.workshop.steps.TicketSearchSteps;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -29,7 +30,9 @@ import static org.jbehave.core.reporters.Format.TXT;
 import static org.jbehave.core.reporters.Format.XML;
 
 public class MyStories extends JUnitStories {
-    
+
+    private ChromeDriver chromeDriver = new ChromeDriver();
+
     public MyStories() {
         configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(true)
                 .doIgnoreFailureInView(true).useThreads(2).useStoryTimeoutInSecs(60);
@@ -55,9 +58,9 @@ public class MyStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
-        ChromeDriver chromeDriver = new ChromeDriver();
-        return new InstanceStepsFactory(configuration(), new TicketSearchSteps(chromeDriver));
+        return new InstanceStepsFactory(configuration(),
+                new TicketSearchSteps(chromeDriver),
+                new LifecycleSteps(chromeDriver));
     }
 
     @Override
