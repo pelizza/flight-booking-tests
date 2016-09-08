@@ -6,6 +6,7 @@ import org.jbehave.core.annotations.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
+@SuppressWarnings("unused")
 public class TicketSearchSteps {
 
     private final TicketSearchPage ticketSearchPage;
